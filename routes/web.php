@@ -12,5 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+
+	$dados = [
+		"activeListar" => "class=active"
+	];
+
+    return view('locadora-padrao.padrao', $dados);
+})->name('home');
+
+
+Route::get('/filme/cadastrar', function(){
+
+	$dados = [
+		"activeCadastrar" => "class=active"
+	];
+
+	return view('cadastrar-filme', $dados);
+})->name('cadastrarFilme');
