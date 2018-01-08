@@ -61,23 +61,29 @@
     {{-- Barra de navegacao lateral --}}
 	<aside>
 	    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-	    	<div class="container-fluid">
+	    	{{-- <div class="container-fluid"> --}}
 		        <ul class="nav menu">
 		         	<li {{ $activeListar or "" }} id="ativa">
 		         		<a href="{{ route('home') }}">
-		         			<span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
+		         			<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 		         			Lista de Filmes
 		         		</a>
 		         	</li>
 		          	<li {{ $activeCadastrar or "" }} id="ativa">
 		          		<a href="{{ route('cadastrarFilme') }}">
-		          			<span class="glyphicon glyphicon-film" aria-hidden="true"></span>
+		          			<span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
 		          			Cadastrar Filme
+		          		</a>
+		          	</li>
+		          	<li {{ $activeGenero or "" }} id="ativa">
+		          		<a href="{{ route('controlarGenero') }}">
+		          			<span class="glyphicon glyphicon-move" aria-hidden="true"></span>
+		          			Controlar Genero
 		          		</a>
 		          	</li>
 		          	<li {{ $activeClientes or "" }} id="ativa">
 		          		<a href="tables.html">
-		          			<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+		          			<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
 		          			Lista de Clientes
 		          		</a>
 		          	</li>
@@ -95,28 +101,29 @@
 		        	Thiago Rocha<br>
 		        	Saulo Henrrique
 		        </div> --}}
-	        </div>
+	        {{-- </div> --}}
 	   	</div>
 	</aside>
 	<main>
-		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-			<div class="container-fluid espaco-abaixo">
-				<div class="row">
-				    <ol class="breadcrumb">
-				    	<li>
-				    		<a href="#">
-				    			<svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg>
-				    		</a>
-				    	</li>
-				      <li class="active">@yield('nomePagina')</li>
-				    </ol>
-				</div>
+		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
+			<div class="row">
+				<ol class="breadcrumb">
+					<li>
+						<a href="#">
+				    		<svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg>
+				    	</a>
+				    </li>
+				    <li class="active">
+				    	@yield('nomePagina')
+				    </li>
+				</ol>
 			</div>
 			<br />
-			<div class="container-fluid">
-				<div class="row">
+			<div class="row">
+				<div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
 					@if ($errors->any())
 					    <div class="alert alert-danger">
+					    	<strong>Whoops!</strong> Houve um problema com seus campos.
 					        <ul>
 					            @foreach ($errors->all() as $error)
 					                <li>{{ $error }}</li>
@@ -124,18 +131,43 @@
 					        </ul>
 					    </div>
 					@endif
+					@if (session()->has('success'))
+						<div class="alert alert-success">
+							<strong>Parabéns! </strong>{{ session('success') }}
+						</div>
+					@elseif(session()->has('error'))
+						<div class="alert alert-danger">
+							<strong>Opa! </strong>{{ session('error') }}
+						</div>
+					@endif
 				</div>
 			</div>
 			<br />
-			<div class="container-fluid">
-				<div class="row">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
 					@yield('conteudo')
 				</div>
 			</div>
 		</div>
 	</main>
-    <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    {{-- Script para controle de genero --}}
+    <script>
+    	$('#idSelectGenero').on('change', function(){
+    		var tipo = $(this).val();
+
+    		if(tipo == 1) {
+    			$('#divDeletar').css('display','none');
+    			$('#divCadastrar').css('display','block');
+    		}else if(tipo == 2){
+    			$('#divCadastrar').css('display','none');
+    			$('#divDeletar').css('display','block');
+    		}else {
+    			$('#divDeletar').css('display','none');
+    			$('#divCadastrar').css('display','none');
+    		}
+    	});
+    </script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/active-menu.js') }}"></script>
  </body>
 </html>
