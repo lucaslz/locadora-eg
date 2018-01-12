@@ -12,10 +12,14 @@
 */
 
 //Chama a tela de lgin
+Route::get('/','Login@showLogin')->name('login');
 Route::get('login','Login@showLogin')->name('login');
 
 //Chama faz a autententicacao do usuario
 Route::post('login/validar','Login@doLogin')->name('doLogin');
+
+//Faz o logout do usuario no sistema
+Route::get('logout','Login@logout')->name('logout');
 
 //Agrupamento de rotas do filme
 Route::prefix('filme')->group(function () {
@@ -50,4 +54,27 @@ Route::prefix('filme')->group(function () {
 	//Rotar para alugar um filme
 	Route::get('alugar/{idFilme?}', 'Filmes@valugarFilme')->name('alugarFilme');
 
+});
+
+
+//Rotas para controle e gerenciamento de usuarios
+Route::prefix('clientes')->group(function () {
+
+	//Rota home da locadora de ǘideos
+	Route::get('/','Clientes@listarClientes')->name('clientes');
+
+	//Rota para cadastrar Clientes
+	Route::get('cadastrar', 'Clientes@cadastrarClientes')->name('cadastrarCliente');
+
+	//Rota que cadastra um novo cliente
+	Route::post('cadastrar/validar', 'Clientes@cadastrarValidarClientes')->name('cadastrarValidar');
+
+	//Rota que preenche a tela de alterar dados
+	Route::get('alterar/{idCliente?}', 'Clientes@alterarClientes')->name('alterarCliente');
+
+	//Rota que altera o cliente e o endereco do cliente
+	Route::post('alterar/validar', 'Clientes@alterarValidarClientes')->name('alterarValidarCliente');
+
+	//Rota que deleta um cliente juntamente com seu endereco
+	Route::get('deletar/{idClienteEndereco?}', 'Clientes@deletarClientes')->name('deletarCliente');
 });

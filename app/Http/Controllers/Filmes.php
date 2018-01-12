@@ -37,8 +37,17 @@ class Filmes extends Controller
         //Trando os id's dos filmes
         $dados["filmes"] = Traits\TraitFilme::tratarIdFilme($dados["filmes"]);
 
+        //Pegando o toral de filmes
+        $dados["totalFilmes"] = current(Model\Video::sltTotalFilmes());
+
+        //Pegando o total de Clientes
+        $dados["totalClientes"] = current(Model\Cliente::sltTotalClientes());
+
+        //Pegando o total de Locacoes feitas
+        $dados["totalLocacoe"] = current(Model\Locacoe::sltTotalLocacoes());
+
         //View que ira renderizar os dados
-    	return view('listar-filmes', $dados);
+    	return view('filme.listar-filmes', $dados);
     }
 
     /**
@@ -55,7 +64,7 @@ class Filmes extends Controller
         ];
 
         //View que ira renderizar os dados
-        return view('cadastrar-filme', $dados);
+        return view('filme.cadastrar-filme', $dados);
     }
 
     /**
@@ -133,7 +142,7 @@ class Filmes extends Controller
         $dados['filme'] = Traits\TraitFilme::tratarFilmeParaVisualizer($filme);
 
         //View que ira renderizar os dados
-        return view('visualizar-filme', $dados);
+        return view('filme.visualizar-filme', $dados);
     }
 
     /**
@@ -161,7 +170,7 @@ class Filmes extends Controller
         $dados['filme'] = Traits\TraitFilme::tratarFilmeParaVisualizer($filme);
 
         //View que ira renderizar os dados
-        return view('alterar-filme', $dados);
+        return view('filme.alterar-filme', $dados);
     }
 
     /**
@@ -225,11 +234,25 @@ class Filmes extends Controller
         //Decodificando o id
         $id = unserialize(base64_decode($request->input('idFilme')));
 
+        //Pegando nome da foto para excluir
+        $nomeImage = current(
+            Model\Video::find($id)->all(['imagem'])->toArray()
+        )['imagem'];
+
+        $resultImage = Traits\TraitImagens::deletarImagem($nomeImage);
+
+        if ($resultImage === false) {
+            return redirect()->back()->with(
+                'error',
+                'Filme não pode ser Deletado, Problema com a Imagem!'
+            );
+        }
+
         //Deletando o filme
         $resultDelete = Model\Video::find($id)->delete();
 
         if ($resultDelete === true) {
-            return redirect('/')->with(
+            return redirect('filme')->with(
                 'success',
                 'Filme Deletado com sucesso!'
             );
@@ -265,7 +288,7 @@ class Filmes extends Controller
         ];
 
         //View que ira renderizar os dados
-        return view('controlar-genero', $dados);
+        return view('filme.controlar-genero', $dados);
     }
 
     /**

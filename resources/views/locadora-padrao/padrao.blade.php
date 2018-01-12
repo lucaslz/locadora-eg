@@ -7,8 +7,10 @@
     <link rel="shortcut icon" type="image/ico" href="{{ asset('img/favicon.ico') }}">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}"/>
     {{-- scripts --}}
-    <script src="{{ asset('js/lumino.glyphs.js') }}" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 	{{-- Barra de navegacao superior --}}
@@ -44,7 +46,7 @@
 	                  		</a>
 	                  	</li>
 	                  	<li>
-	                  		<a href="#">
+	                  		<a href="{{ route('logout') }}">
 	                  			<svg class="glyph stroked cancel">
 	                  				<use xlink:href="#stroked-cancel"></use>
 	                  			</svg>
@@ -82,25 +84,19 @@
 		          		</a>
 		          	</li>
 		          	<li {{ $activeClientes or "" }} id="ativa">
-		          		<a href="tables.html">
-		          			<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+		          		<a href="{{ route('clientes') }}">
+		          			<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 		          			Lista de Clientes
 		          		</a>
 		          	</li>
-		          	<li {{ $activeUsuarios or "" }} id="ativa">
-		          		<a href="tables.html">
-		          			<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-		          			Lista de Usuarios
-		          		</a>
-		          	</li>
 		        </ul>
-{{-- 		        <div class="attribution">
+		        <div class="attribution">
 		        	<b>Criado por: </b><br/>
 		        	Lucas Lima<br>
 		        	Icaro Quintão<br>
 		        	Thiago Rocha<br>
 		        	Saulo Henrrique
-		        </div> --}}
+		        </div>
 	        {{-- </div> --}}
 	   	</div>
 	</aside>
@@ -142,6 +138,68 @@
 					@endif
 				</div>
 			</div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-film fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">{{ $totalFilmes->total }}</div>
+                                    <div>Total de Filmes!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-users fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">{{ $totalClientes->total }}</div>
+                                    <div>Total de Clientes!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-line-chart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">{{ $totalLocacoe->total }}</div>
+                                    <div>Filmes Alugados!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
 			<br />
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
@@ -168,6 +226,39 @@
     		}
     	});
     </script>
+    <script src="{{ asset('js/lumino.glyphs.js') }}" type="text/javascript" charset="utf-8"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
+    <script>
+		$(document).ready(function() {
+		    $('#locausers').DataTable( {
+		        "language": {
+		        	"Processing":   "A processar...",
+		            "lengthMenu": "Mostrar _MENU_ registos",
+		            "zeroRecords": "Não foram encontrados resultados",
+		            "info": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+		            "infoEmpty": "Mostrando de 0 até 0 de 0 registos",
+		            "infoFiltered": "(filtrado de _MAX_ registos no total)",
+		            "InfoPostFix":  "",
+		            "sSearch": "Procurar:",
+		            "sUrl": "",
+		            "oPaginate": {
+				        "sFirst":    "Primeiro",
+				        "sPrevious": "Anterior",
+				        "sNext":     "Seguinte",
+				        "sLast":     "Último"
+				    }
+		        }
+		    } );
+		} );
+    </script>
+    <script type="text/javascript" src="{{ asset('jquery-mask/jquery.mask.min.js') }}"></script>
+    <script>
+    	$(function() {
+    		$('.cpf').mask('000.000.000-00', {reverse: true});
+    		$('.telefone').mask('(00) 0 0000-0000');
+    		$('.cep').mask('00000-000');
+    	});
+    </script>
  </body>
 </html>

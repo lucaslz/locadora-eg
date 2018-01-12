@@ -73,4 +73,16 @@ class Video extends Model
             "videos.imagem"
         )->where('videos.id', '=', $idFilme)->get()->toArray();
     }
+
+    /**
+     * Retorna o numero total de filmes
+     *
+     * @return int $total
+     */
+    public static function sltTotalFilmes()
+    {
+        return DB::table('videos')
+            ->select(DB::raw('COUNT(*) as total'))
+            ->get()->toArray();
+    }
 }

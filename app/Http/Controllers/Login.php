@@ -16,12 +16,17 @@ class Login extends Controller
      */
     public function showLogin()
     {
-    	// var_dump("Teste"); die();
-    	return view('login');
+    	if (Auth::check()) {
+    		return Redirect::to('filme');
+    	} else {
+    		return view('login');
+    	}
     }
 
     /**
      * Metodo que faz o controle do login
+     *
+     * @access public
      */
     public function doLogin(Request $request)
     {
@@ -47,7 +52,7 @@ class Login extends Controller
 		    //Tentando fazer o login com o usuario
 		    if (Auth::attempt($dadosUsuario)) {
 		    	//Caso a validacao ocorra com sucesso eu posso liberar o acesso
-		        return Redirect::to('home');
+		        return Redirect::to('filme');
 
 		    } else {
 		        //Caso a validacao nao ocorra com sucesso volta para o formulario
@@ -55,5 +60,19 @@ class Login extends Controller
 		        return redirect('login')->with('error', 'Login ou Senha incorretos!');
 		    }
         }
+    }
+
+    /**
+     * Metodo que faz faz o logout do usuario
+     *
+     * @access public
+     */
+    public function logout()
+    {
+    	//Fazendo logout no sistema
+    	Auth::logout();
+
+    	//Chamado a view
+    	return view('login');
     }
 }

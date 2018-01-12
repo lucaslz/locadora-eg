@@ -11,7 +11,7 @@ use Image;
 Trait TraitImagens
 {
     /**
-     * Salva a imágem redimenciona e retorna o nome dela no diretorio
+     * Salva a imagem redimenciona e retorna o nome dela no diretorio
      *
      * @param $image
      * @return mixed $fileName
@@ -23,5 +23,16 @@ Trait TraitImagens
         Image::make($image)->resize(242, 200)->save($location);
 
         return $fileName;
+    }
+
+    /**
+     * Metodo que deleta uma imagem na pasta de upload de imagens
+     *
+     * @param String $image
+     * @return mixed true or false
+     */
+    public static function deletarImagem($image)
+    {
+        return \File::delete('uploads/imagens/' . $image);
     }
 }
