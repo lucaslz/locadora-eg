@@ -39,9 +39,9 @@
 	        			<td>{{ date_format(date_create($element->dataNascimento), 'd-m-Y') }}</td>
 	        			<td>
 	        				@if (is_null($element->total) || empty($element->total))
-	        					{{ "R$ " . "0,00" }}
+	        					{{ "R$ " . "0.00" }}
 	        				@else
-	        					{{ "R$ " . number_format($element->total, 2, ',') }}
+	        					{{ "R$ " . number_format($element->total, 2, '.', '') }}
 	        				@endif
 	        			</td>
 	        			<td>
@@ -50,43 +50,22 @@
 						    </a>
 	        			</td>
 	        			<td>
-						    <a data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-sm">
+						    <a href="{{ route('deletarCliente')."/".$element->idClienteEndereco }}" class="btn btn-danger btn-sm">
 						      	<span class="glyphicon glyphicon-remove"></span>
 						    </a>
 	        			</td>
 	        			<td>
 	        				@if(empty($element->total))
-							    <a href="{{ route('alterarCliente')."/".$element->idClienteEndereco }}" class="btn btn-success btn-sm">
+							    <button class="btn btn-success btn-sm" disabled>
 							      	<span class="glyphicon glyphicon-ok"></span>
-							    </a>
+							    </button>
 	        				@else
-							    <a href="{{ route('alterarCliente')."/".$element->idClienteEndereco }}" class="btn btn-primary btn-sm">
+							    <a href="{{ route('pagarClientes') .'/'. $element->idClienteEndereco }}" class="btn btn-primary btn-sm">
 							      	<span class="glyphicon glyphicon-usd"></span>
 							    </a>
 	        				@endif
 	        			</td>
 	        		</tr>
-					<!-- Modal -->
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-					  	<div class="modal-dialog" role="document">
-					    	<div class="modal-content">
-					      		<div class="modal-header">
-					        		<h4 class="modal-title text-center alert alert-warning" role="alert" id="myModalLabel">
-					        			<strong>Atenção!</strong>
-					        		</h4>
-					      		</div>
-					      		<div class="modal-body text-center text-responsive">
-					        		<h3 style="color: green;">
-					        			Deseja Realmente Excluir o Cliente?
-					        		</h3>
-					      		</div>
-					      		<div class="modal-footer">
-					        		<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-					        		<a href="{{ route('deletarCliente')."/".$element->idClienteEndereco }}" title="deletar" class="btn btn-danger">Deletar</a>
-					      		</div>
-					    	</div>
-					  	</div>
-					</div>
 	        	@endforeach
 	        </tbody>
     	</table>

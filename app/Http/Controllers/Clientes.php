@@ -223,4 +223,60 @@ class Clientes extends Controller
             'Cliente não pode ser Deletado!'
         );
     }
+
+
+    /**
+     * Deleta os dados de um cliente
+     *
+     * @param Request $request
+     * @access public
+     */
+    public function pagarClientes($idClienteEndereco)
+    {
+        //Decodificando e pegando o id do cliente
+        $idCliente = explode("|", unserialize(
+            base64_decode(
+                $idClienteEndereco
+            )
+        ))[0];
+
+        $debito = current(Model\Locacoe::sltSaldoCliente($idCliente));
+
+        if ($debito->total  == 0) {
+            //Retorna uma mensagem para o usuario
+            return redirect('clientes')->with(
+                'error',
+                'O cliente não possui débito!'
+            );
+        }
+
+        //Pegando os ids das locacoes
+        $idLocacoe = Model\Locacoe::select('id', 'idVideo')
+            ->where('idCliente', '=', $idCliente)
+            ->where('pago', '=', 0)
+            ->get()->toArray();
+
+        //Marcando as locacoes como pagas e liberando os filmes
+        try {
+            foreach ($idLocacoe as $value) {
+                Model\Locacoe::where('id', '=', $value['id'])
+                    ->update(['pago' => 1]);
+
+                Model\Video::where('id', '=', $value['idVideo'])
+                    ->update(['disposicao' => 1]);
+            }
+        } catch (Exception $e) {
+            //Caso houver algum erro
+            return redirect()->back()->with(
+                'error',
+                'Algo deu errado entre em Contato com o Suporte!'
+            );
+        }
+
+        //Retorna uma mensagem para o usuario
+        return redirect('clientes')->with(
+            'success',
+            'O Cliente não contem mais Débitos!'
+        );
+    }
 }

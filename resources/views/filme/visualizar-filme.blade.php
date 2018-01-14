@@ -42,7 +42,7 @@
 				    			</h4>
 				    		@else
 				    			<h4>
-				    				<span class="label label-warning">Sim</span>
+				    				<span class="label label-warning">Não</span>
 				    			</h4>
 				    		@endif
 				    	</div>
@@ -53,11 +53,11 @@
 		  		<a href="{{ route('alterarFilme') . '/' . $filme->id }}" title="Alterar" class="btn btn-md btn-primary">
 		  			Alterar
 		  		</a>
-				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletarModal">
 				  	Deletar
 				</button>
 		  		@if ($filme->disposicao == 1)
-		  			<a href="{{ route('alugarFilme') . '/' . $filme->id  }}" title="Alugar" class="btn btn-md btn-warning">
+		  			<a type="button" title="Alugar" class="btn btn-md btn-warning" data-toggle="modal" data-target="#alugarModal">
 		  				Alugar
 		  			</a>
 		  		@endif
@@ -66,7 +66,7 @@
 	</div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -93,6 +93,47 @@
                 </div>
              </div>
             </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="alugarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-center text-responsive alert alert-info">
+                    <strong>Aluguel de Filme!</strong>
+                </h2>
+            </div>
+            <form class="form-horizontal" action="{{ route('alugarFilme') }}" method="post" accept-charset="utf-8">
+	            <div class="modal-body">
+	                <div class="form-group">
+	                	<label for="inputCliente" class="col-sm-2 control-label">Cliente: </label>
+				    	<div class="col-sm-10">
+				    		<select name="idCliente" class="form-control">
+				    			<option value="0">Selecione</option>
+				    			@foreach ($clientes as $element)
+				    				<option value="{{ $element->id }}">{{ $element->cpf ." | ". $element->nome}}</option>
+				    			@endforeach
+				    		</select>
+				    	</div>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	             	<div class="col-sm-8 col-sm-offset-2">
+	                	<div class="col-sm-6">
+		                	<button type="button" class="btn btn-warning" data-dismiss="modal">
+		                		Fechar Janela
+		                	</button>
+	                	</div>
+	                	<div class="col-sm-6">
+	                		<input type="submit" class="btn btn-primary" value="Alugar Filme">
+             			</div>
+             		</div>
+            	</div>
+	        	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	        	<input type="hidden" name="idFilme" value="{{ $filme->id }}">
+	        </form>
         </div>
     </div>
 </div>

@@ -38,7 +38,7 @@
 	                </a>
 	                <ul class="dropdown-menu" role="menu">
 	                  	<li>
-	                  		<a href="#">
+	                  		<a href="{{ route('loginAlterar') }}">
 	                  			<svg class="glyph stroked male-user">
 	                  				<use xlink:href="#stroked-male-user"></use>
 	                  			</svg>
@@ -79,7 +79,7 @@
 		          	</li>
 		          	<li {{ $activeGenero or "" }} id="ativa">
 		          		<a href="{{ route('controlarGenero') }}">
-		          			<span class="glyphicon glyphicon-move" aria-hidden="true"></span>
+		          			<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
 		          			Controlar Genero
 		          		</a>
 		          	</li>
@@ -87,6 +87,24 @@
 		          		<a href="{{ route('clientes') }}">
 		          			<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 		          			Lista de Clientes
+		          		</a>
+		          	</li>
+		          	<li {{ $activePreco or "" }} id="ativa">
+		          		<a href="{{ route('gerenciarPreco') }}">
+		          			<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+		          			Preco e Desconto
+		          		</a>
+		          	</li>
+		          	<li {{ $activeUser or "" }} id="ativa">
+		          		<a href="{{ route('controle') }}">
+		          			<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+		          			Controle de Usuarios
+		          		</a>
+		          	</li>
+		          	<li {{ $activeRelatório or "" }} id="ativa">
+		          		<a href="{{ route('listarRelatorios') }}">
+		          			<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+		          			Relatório
 		          		</a>
 		          	</li>
 		        </ul>
@@ -138,68 +156,90 @@
 					@endif
 				</div>
 			</div>
-            <div class="row">
-                <div class="col-lg-4 col-md-4">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-film fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">{{ $totalFilmes->total }}</div>
-                                    <div>Total de Filmes!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-users fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">{{ $totalClientes->total }}</div>
-                                    <div>Total de Clientes!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="panel panel-warning">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-line-chart fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">{{ $totalLocacoe->total }}</div>
-                                    <div>Filmes Alugados!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+			@if (isset($totalFilmes) && isset($totalClientes) && isset($totalLocacoe))
+	            <div class="row">
+	                <div class="col-lg-3 col-md-6">
+	                    <div class="panel panel-info">
+	                        <div class="panel-heading">
+	                            <div class="row">
+	                                <div class="col-xs-3">
+	                                    <i class="fa fa-film fa-5x"></i>
+	                                </div>
+	                                <div class="col-xs-9 text-right">
+	                                    <div class="huge">{{ $totalFilmes->total }}</div>
+	                                    <div>Filmes</div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <a href="#">
+	                            <div class="panel-footer">
+	                                <div class="clearfix"></div>
+	                            </div>
+	                        </a>
+	                    </div>
+	                </div>
+	                <div class="col-lg-3 col-md-4">
+	                    <div class="panel panel-success">
+	                        <div class="panel-heading">
+	                            <div class="row">
+	                                <div class="col-xs-3">
+	                                    <i class="fa fa-users fa-5x"></i>
+	                                </div>
+	                                <div class="col-xs-9 text-right">
+	                                    <div class="huge">{{ $totalClientes->total }}</div>
+	                                    <div>Clientes</div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <a href="#">
+	                            <div class="panel-footer">
+	                                <div class="clearfix"></div>
+	                            </div>
+	                        </a>
+	                    </div>
+	                </div>
+	                <div class="col-lg-3 col-md-6">
+	                    <div class="panel panel-warning">
+	                        <div class="panel-heading">
+	                            <div class="row">
+	                                <div class="col-xs-3">
+	                                    <i class="fa fa-line-chart fa-5x"></i>
+	                                </div>
+	                                <div class="col-xs-9 text-right">
+	                                    <div class="huge">{{ $totalLocacoe->total }}</div>
+	                                    <div>Alugados</div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <a href="#">
+	                            <div class="panel-footer">
+	                                <div class="clearfix"></div>
+	                            </div>
+	                        </a>
+	                    </div>
+	                </div>
+	                <div class="col-lg-3 col-md-6">
+	                    <div class="panel panel-danger">
+	                        <div class="panel-heading">
+	                            <div class="row">
+	                                <div class="col-xs-3">
+	                                    <i class="fa fa-usd fa-5x"></i>
+	                                </div>
+	                                <div class="col-xs-9 text-right">
+	                                    <div class="huge">{{ "R$ " . number_format($precoAluguel->valor, 2, ',', '') }}</div>
+	                                    <div>Preço</div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <a href="#">
+	                            <div class="panel-footer">
+	                                <div class="clearfix"></div>
+	                            </div>
+	                        </a>
+	                    </div>
+	                </div>
+	            </div>
+	        @endif
 			<br />
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
@@ -223,6 +263,22 @@
     		}else {
     			$('#divDeletar').css('display','none');
     			$('#divCadastrar').css('display','none');
+    		}
+    	});
+    </script>
+    <script>
+    	$('#idSelectPreco').on('change', function(){
+    		var tipo = $(this).val();
+
+    		if(tipo == 1) {
+    			$('#divAlterarDesconto').css('display','none');
+    			$('#divAlterarPreco').css('display','block');
+    		}else if(tipo == 2){
+    			$('#divAlterarPreco').css('display','none');
+    			$('#divAlterarDesconto').css('display','block');
+    		}else {
+    			$('#divAlterarPreco').css('display','none');
+    			$('#divAlterarDesconto').css('display','none');
     		}
     	});
     </script>
@@ -258,6 +314,8 @@
     		$('.cpf').mask('000.000.000-00', {reverse: true});
     		$('.telefone').mask('(00) 0 0000-0000');
     		$('.cep').mask('00000-000');
+    		$('.precoControle').mask('00.00');
+    		$('#inputValor').mask('00.00');
     	});
     </script>
  </body>

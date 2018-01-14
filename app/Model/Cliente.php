@@ -118,4 +118,15 @@ class Cliente extends Model
             ->select(DB::raw('COUNT(*) as total'))
             ->get()->toArray();
     }
+
+    /**
+     * Retorna todos os clientes cadastrados
+     *
+     * @return Array Clientes
+     */
+    public static function lstClientesInfo()
+    {
+        return DB::table('clientes')
+            ->select('*')->get()->toArray();
+    }
 }

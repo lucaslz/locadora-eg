@@ -11,15 +11,35 @@
 |
 */
 
-//Chama a tela de lgin
+//Rota principal de login
 Route::get('/','Login@showLogin')->name('login');
-Route::get('login','Login@showLogin')->name('login');
 
-//Chama faz a autententicacao do usuario
-Route::post('login/validar','Login@doLogin')->name('doLogin');
+//Chama a tela de login
+Route::prefix('login')->group(function () {
+	//Chama faz a autententicacao do usuario
+	Route::post('validar','Login@doLogin')->name('doLogin');
 
-//Faz o logout do usuario no sistema
-Route::get('logout','Login@logout')->name('logout');
+	//Faz o logout do usuario no sistema
+	Route::get('logout','Login@logout')->name('logout');
+
+	//Rota para da pagina de alteracao e visualizacao de usuario
+	Route::get('alterar','Login@alterar')->name('loginAlterar');
+
+	//Rota que da update no banco de dados
+	Route::post('alterar/validar','Login@alterarValidar')->name('loginAlterarValidar');
+
+	//Rota que abre a tela de controle de usuario
+	Route::get('controle', 'Login@controleUsuario')->name('controle');
+
+	//Rota para alterar um usuario que veio da tela de controle
+	Route::get('controle/alterar/{id?}', 'Login@controleUsuarioAlterar')->name('controleAlterar');
+
+	//Rota para alterar a senha
+	Route::post('resete', 'Login@resetePassword')->name('resetePassword');
+
+	//Rota para criar um usuario
+	Route::post('criar', 'Login@criarPassword')->name('criarPassword');
+});
 
 //Agrupamento de rotas do filme
 Route::prefix('filme')->group(function () {
@@ -52,7 +72,7 @@ Route::prefix('filme')->group(function () {
 	Route::post('delete', 'Filmes@delete')->name('deleteFilme');
 
 	//Rotar para alugar um filme
-	Route::get('alugar/{idFilme?}', 'Filmes@valugarFilme')->name('alugarFilme');
+	Route::post('alugar/{idFilme?}', 'Filmes@alugarFilme')->name('alugarFilme');
 
 });
 
@@ -77,4 +97,30 @@ Route::prefix('clientes')->group(function () {
 
 	//Rota que deleta um cliente juntamente com seu endereco
 	Route::get('deletar/{idClienteEndereco?}', 'Clientes@deletarClientes')->name('deletarCliente');
+
+	//Rota para debitar filme de usuario
+	Route::get('pagar/{idClienteEndereco?}', 'Clientes@pagarClientes')->name('pagarClientes');
+});
+
+
+//Rotas para controle e gerenciamento de usuarios
+Route::prefix('precos')->group(function () {
+
+	//Rota home da locadora de ǘideos
+	Route::get('/','Precos@gerenciarPreco')->name('gerenciarPreco');
+
+	//Rota responsavel por alterar preco e alterar o desconto
+	Route::post('alterar', 'Precos@alterarPrecoDesconto')->name('alterarPrecoDesconto');
+
+});
+
+//Rotas para controle e gerenciamento de relatorios
+Route::prefix('relatorios')->group(function () {
+
+	//Rota principal dos relatorios
+	Route::get('/','Relatorios@iniciaRelatorio')->name('listarRelatorios');
+
+	//Rota dos relatorios semanal
+	Route::post('semanal','Relatorios@semanalRelatorios')->name('semanalRelatorios');
+
 });

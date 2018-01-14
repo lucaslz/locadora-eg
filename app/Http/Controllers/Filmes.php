@@ -46,6 +46,9 @@ class Filmes extends Controller
         //Pegando o total de Locacoes feitas
         $dados["totalLocacoe"] = current(Model\Locacoe::sltTotalLocacoes());
 
+        //Pegando o valor atual do aluguel e o desconto
+        $dados["precoAluguel"] = current(Model\Preco::sltPrecoAndDesconto());
+
         //View que ira renderizar os dados
     	return view('filme.listar-filmes', $dados);
     }
@@ -140,6 +143,9 @@ class Filmes extends Controller
 
         //Tratando os dados para exibi-los
         $dados['filme'] = Traits\TraitFilme::tratarFilmeParaVisualizer($filme);
+
+        //Buscando todos os clientes cadastrados
+        $dados['clientes'] = Model\Cliente::lstClientesInfo();
 
         //View que ira renderizar os dados
         return view('filme.visualizar-filme', $dados);
@@ -299,7 +305,6 @@ class Filmes extends Controller
      */
     public function deletarECadastrarGenero(Request $request)
     {
-        $frase = "";
         $dados = $request->all();
 
         if ($dados['decisao'] == Enum\Genero::ADD_GENERO) {
@@ -321,6 +326,77 @@ class Filmes extends Controller
         return redirect()->back()->with(
             'error',
             'Genero não pode ser ' . $frase . '!'
+        );
+    }
+
+    public function alugarFilme(Request $request)
+    {
+        //Pegando os dados
+        $dados = $request->all();
+
+        if ($dados['idCliente'] == 0) {
+            //Caso houver algum erro
+            return redirect()->back()->with(
+                'error',
+                'Filme não pode ser Alugado!'
+            );
+        }
+
+        //Decodificando is do filme
+        $idFilme = unserialize(base64_decode($dados['idFilme']));
+
+        //Buscando o valor do alugel atual do filme
+        $valorAtual = current(Model\Preco::all()->toArray())['valor'];
+
+        //Verificando se o filme ja esta alugado por essa pessoa
+        $resultAlugado = current(
+            Model\Locacoe::sltSeFilmeAlugado($dados['idCliente'], $idFilme)
+        );
+
+        //Retorna uma mensagem para o usuario
+        if ($resultAlugado->total > 0) {
+            return redirect()->back()->with(
+                'error',
+                'Filme Já Esta Alugado Pelo Cliente ou Por Outro Cliente!'
+            );
+        }
+
+        $resultPodeAludar = current(
+            Model\Locacoe::sltSeFilmeAlugado($dados['idCliente'])
+        );
+
+        //Retorna uma mensagem para o usuario
+        if ($resultPodeAludar->total >= 3) {
+            return redirect()->back()->with(
+                'error',
+                'Nenhum Cliente pode Alugar mais de 3 Filmes!'
+            );
+        }
+
+        $resulLocacao = Model\Locacoe::insert([
+            'idCliente' => $dados['idCliente'],
+            'idVideo' => $idFilme,
+            'dataLocacao' => now(),
+            'valorLocacao' => $valorAtual
+        ]);
+
+        //Retorna uma mensagem para o usuario
+        if ($resulLocacao === true) {
+            //Marcando video como alugado
+            Model\Video::where('id', $idFilme)
+            ->update(['disposicao' => 0]);
+
+            //Retornando mensagem de sucesso
+            return redirect()->back()->with(
+                'success',
+                'Aluguel do Filme Feito com sucesso!'
+            );
+        }
+
+        //Caso houver algum erro
+        return redirect()->back()->with(
+            'error',
+            'Filme não pode ser Alugado!'
         );
     }
 }
