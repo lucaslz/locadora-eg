@@ -5,6 +5,9 @@
 Programas Usados:
 
 laravel
+
 mysql-workbench
+
 vagrant
+
 Laravel Homestead
