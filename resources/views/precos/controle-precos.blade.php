@@ -10,7 +10,7 @@
 				<h1 class="panel-title">Gerenciamento e Controle de Precos</h1>
 			</div>
 			<div class="panel-body">
-				<form class="form-horizontal" action="{{ route('alterarPrecoDesconto') }}" method="post">
+				<form class="form-horizontal" action="{{ route('precoDesconto') }}" method="post">
 					<div class="form-group">
 						<label for="idSelectPreco" class="col-sm-2 control-label">
 							O que deseja fazer ?
@@ -28,9 +28,24 @@
 							</select>
 						</div>
 					</div>
+					<span style="display: none;" id="divIncluirPrecoDesconto">
+						<form class="form-horizontal" action="{{ route('precoDescontoIncluir') }}" method="post">
+							<div class="form-group">
+								<label for="inputPreco" class="form-label col-sm-offset-2">Preço</label>
+								<div class="col-md-10">
+									<input type="text" name="preco" id="inputPreco" required>
+								</div>
+							</div>
+						</form>
+					</span>
 					<span style="display: none;" id="divAlterarPreco">
 						<div class="alert alert-success" role="alert">
-							<strong>Preço Atual: </strong>{{ "R$ " . number_format($precoAluguel->valor, 2, ',', '') }}
+							<strong>Preço Atual: </strong>
+							@if (isset($precoAluguel->valor) && !empty($precoAluguel->valor))
+								{{ "R$ " . number_format($precoAluguel->valor, 2, ',', '') }}
+							@else
+								{{ "R$ " . "0,00" }}
+							@endif
 						</div>
 						<div class="form-group">
 						    <label for="inputGenero" class="col-sm-2 control-label">
@@ -48,7 +63,12 @@
 					</span>
 					<span style="display: none;" id="divAlterarDesconto">
 						<div class="alert alert-success" role="alert">
-							<strong>Desconto Atual: </strong>{{ $precoAluguel->desconto }}
+							<strong>Desconto Atual: </strong>
+							@if (isset($precoAluguel->desconto) && !empty($precoAluguel->desconto))
+								{{ $precoAluguel->desconto }}
+							@else
+								{{ 0 }}
+							@endif
 						</div>
 						<div class="form-group">
 						    <label for="inputGenero" class="col-sm-2 control-label">
@@ -65,7 +85,7 @@
 					  	</div>
 					</span>
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					<input type="hidden" name="id" value="{{ $precoAluguel->id }}">
+					<input type="hidden" name="id" value="{{ $precoAluguel->id or "" }}">
 				</form>
 			</div>
 		</div>

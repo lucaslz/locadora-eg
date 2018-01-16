@@ -7,9 +7,12 @@ use Eloquent\Enumeration\AbstractEnumeration;
 
 final class Preco extends AbstractEnumeration
 {
-	//constante para verifica se o usuario quer deletar um genero
-    const ALTERAR_PRECO = 1;
+	//constante que identifica se um usuario quer incluir um preco
+    const INCLUIR_PRECO_DESCONTO = 1;
 
-    //constante que identifica se o usuario quer adicionar um genero
-    const ALTERAR_DESCONTO = 2 ;
+    //constante para alteracao de preco
+    const ALTERAR_PRECO = 2 ;
+
+    //constante para alteracao de desconto
+    const ALTERAR_DESCONTO = 3 ;
 }

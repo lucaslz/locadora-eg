@@ -276,15 +276,28 @@
     	$('#idSelectPreco').on('change', function(){
     		var tipo = $(this).val();
 
-    		if(tipo == 1) {
-    			$('#divAlterarDesconto').css('display','none');
-    			$('#divAlterarPreco').css('display','block');
-    		}else if(tipo == 2){
-    			$('#divAlterarPreco').css('display','none');
-    			$('#divAlterarDesconto').css('display','block');
-    		}else {
-    			$('#divAlterarPreco').css('display','none');
-    			$('#divAlterarDesconto').css('display','none');
+    		switch(tipo) {
+    			case 1:
+    				console.log(tipo);
+    				$('#divIncluirPrecoDesconto').css('display','block');
+	    			$('#divAlterarDesconto').css('display','none');
+	    			$('#divAlterarPreco').css('display','none');
+    				break;
+    			case 2:
+    				$('#divIncluirPrecoDesconto').css('display','none');
+	    			$('#divAlterarDesconto').css('display','block');
+	    			$('#divAlterarPreco').css('display','none');
+    				break;
+				case 3:
+    				$('#divIncluirPrecoDesconto').css('display','none');
+	    			$('#divAlterarDesconto').css('display','none');
+	    			$('#divAlterarPreco').css('display','block');
+    				break;
+				default:
+    				$('#divIncluirPrecoDesconto').css('display','none');
+	    			$('#divAlterarDesconto').css('display','none');
+	    			$('#divAlterarPreco').css('display','none');
+    				break;
     		}
     	});
     </script>

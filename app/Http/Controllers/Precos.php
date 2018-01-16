@@ -22,12 +22,16 @@ class Precos extends Controller
     	$dados = [
     		"activePreco" => "class=active",
     		"fazerPreco" => [
+                [
+                    "id" => 1,
+                    "preco" => "Incluir Preço",
+                ],
 	    		[
-	    			"id" => 1,
+	    			"id" => 2,
 	    			"preco" => "Alterar Preço",
 	    		],
 	    		[
-	    			"id" => 2,
+	    			"id" => 3,
 	    			"preco" => "Alterar Desconto",
 	    		]
     		],
@@ -40,7 +44,7 @@ class Precos extends Controller
     	return view('precos.controle-precos', $dados);
     }
 
-    public static function alterarPrecoDesconto(Request $request)
+    public static function precoDesconto(Request $request)
     {
         $dados = $request->all();
 
