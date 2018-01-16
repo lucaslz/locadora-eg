@@ -60,7 +60,7 @@ class Login extends Controller
 		    } else {
 		        //Caso a validacao nao ocorra com sucesso volta para o formulario
 		        //E também mostra uma mensagem
-		        return redirect('login')->with('error', 'Login ou Senha incorretos!');
+		        return redirect('/')->with('error', 'Login ou Senha incorretos!');
 		    }
         }
     }
@@ -91,7 +91,7 @@ class Login extends Controller
             "id" => Auth::user()->id,
             "name" => Auth::user()->name,
             "email" => Auth::user()->email,
-            "palavraPasse" => "Cachorro Louco",
+            "palavraPasse" => Auth::user()->palavraPasse,
             "activeUser" => "class=active",
         ];
 
@@ -250,12 +250,12 @@ class Login extends Controller
                     'Sua nova senha é: '. $senha
                 );
             }
-
-            return redirect()->back()->with(
-                'error',
-                'Não foi possível alterar a senha verifique suas credenciais.'
-            );
         }
+
+        return redirect()->back()->with(
+            'error',
+            'Não foi possível alterar a senha verifique suas credenciais.'
+        );
     }
 
     public function criarPassword(Request $request)

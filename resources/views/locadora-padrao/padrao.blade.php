@@ -226,7 +226,13 @@
 	                                    <i class="fa fa-usd fa-5x"></i>
 	                                </div>
 	                                <div class="col-xs-9 text-right">
-	                                    <div class="huge">{{ "R$ " . number_format($precoAluguel->valor, 2, ',', '') }}</div>
+	                                    <div class="huge">
+	                                    	@if (isset($precoAluguel->valor))
+	                                    		{{ "R$ " . number_format($precoAluguel->valor, 2, ',', '') }}
+	                                    	@else
+	                                    		{{ "R$ " ."0,00" }}
+	                                    	@endif
+	                                    </div>
 	                                    <div>Preço</div>
 	                                </div>
 	                            </div>

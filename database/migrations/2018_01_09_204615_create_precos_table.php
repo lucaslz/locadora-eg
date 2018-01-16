@@ -16,6 +16,7 @@ class CreatePrecosTable extends Migration {
 		{
 			$table->increments('id');
 			$table->float('valor', 10);
+			$table->integer('desconto');
 			$table->timestamps();
 		});
 	}
