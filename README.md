@@ -14,4 +14,8 @@ O trabalho foi criado no padrão MVC, foi usada um Framework chamado laravel, qu
 
 - [Laravel Homestead](https://laravel.com/docs/5.5/homestead), maquina virtual que utilizo no vagrant, criada pela equipe do laravel.
 
+### Diagrama ER da aplicação:
 
+Veja que o Diagrama ER da aplicação é bem simples, porem na hora de implementar a funcionalidade exite várias validacoes em cima do software.
+
+![Alt text](ER_ORIGINAL.png?raw=true "Title")
