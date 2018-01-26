@@ -4,12 +4,10 @@
 
 ### Programas Usados:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Framework Laravel 5.5](https://laravel.com/docs/5.5).
 
-- Framework: laravel
+- [MySQL WorkBenk, para fazer o diagrama ER](https://www.mysql.com/products/workbench/).
 
-- mysql-workbench
+- [Vagrant](https://www.vagrantup.com/), o vagrant é uma ferramenta para criação de ambiente virtual.
 
-- vagrant
-
-- Laravel Homestead
+- [Laravel Homestead](https://laravel.com/docs/5.5/homestead), maquina virtual que utilizo no vagrant, criada pela equipe do laravel.
