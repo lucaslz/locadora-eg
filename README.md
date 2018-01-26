@@ -2,12 +2,14 @@
 
 ## Trabalho de Engenharia de Software
 
-Programas Usados:
+### Programas Usados:
 
-laravel
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
 
-mysql-workbench
+- Framework: laravel
 
-vagrant
+- mysql-workbench
 
-Laravel Homestead
+- vagrant
+
+- Laravel Homestead
