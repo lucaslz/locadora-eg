@@ -31,4 +31,13 @@ Abaixo sera listado todos os diretorios onde foi implementado parte do software 
 
 Veja que o Diagrama ER da aplicação é bem simples, porem na hora de implementar a funcionalidade exite várias validacoes em cima do software.
 
-![Alt text](ER_ORIGINAL.png?raw=true "Title")
+![Alt text](ER_ORIGINAL.png?raw=true "Diagrama ER")
+
+
+### Diagrama de Classes da aplicação:
+
+O diagrama de classes também é bem simples e olhando para ele da pra entender como toda aplicação funciona no sistema real pode ser que eu tenha alterado o nome de algumas classes e de alguns métodos mas é tudo igual,
+repare também que o diagrama de classes no modelo MVC a maioria das classes viram Models, porque é la que fica toda a regra de negocio.
+
+
+![Alt text](diagrama_classes.png?raw=true "Diagrama de Classes")
