@@ -24,6 +24,8 @@ Abaixo sera listado todos os diretorios onde foi implementado parte do software 
 - M do MVC onde fica todas as Models criadas na palicação: app/Models
 - V do MVC onde fica todas as views criadas da aplicação: resources/views
 
+- Migrations, configuracao das tabelas do banco de dados: database/migrations
+
 
 ### Diagrama ER da aplicação:
 
