@@ -9,9 +9,7 @@ class Preco extends Model
 {
     protected $fillable = [
         'valor',
-        'desconto',
-        'created_at',
-        'updated_at'
+        'desconto'
     ];
 
 	/**

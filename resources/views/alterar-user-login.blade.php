@@ -12,7 +12,7 @@
 	<div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
 		<div class="panel panel-primary">
 			<div class="panel-heading text-center text-responsive">
-				<h1 class="panel-title">Gerenciamento de Relatórios</h1>
+				<h1 class="panel-title">Perfil de Usuário</h1>
 			</div>
 			<div class="panel-body">
 				<form class="form-horizontal" action="{{ route('loginAlterarValidar') }}" method="post">

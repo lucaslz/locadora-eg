@@ -5,12 +5,18 @@
 @section('conteudo')
 <div class="row">
 	@foreach ($filmes as $e)
-	<div class="col-sm-6 col-md-3">
+	<div class="col-sm-6 col-md-4">
     	<div class="thumbnail">
 	      	<div class="panel-body">
 				<img class="img-responsive center-block" src="{{ asset('uploads/imagens/' . $e->imagem) }}" alt="{{ $e->titulo }}">
 	      		<div class="caption">
-	        		<h3 class="text-center">{{ $e->titulo }}</h3>
+	        		<h3 class="text-center">
+	        			@if (strlen($e->titulo) >= 20)
+	        				{{ substr($e->titulo, 0, 17) . "..." }}
+	        			@else
+	        				{{ $e->titulo }}
+	        			@endif
+	        		</h3>
 	        		<p class="text-center">
 	        			<a href="{{ route('visualizarFilme') . "/" . $e->id }}" class="btn btn-lg btn-primary" role="button">
 	        				Visualizar

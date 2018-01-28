@@ -77,7 +77,7 @@ class Relatorios extends Controller
     	$infomacoes = Model\Locacoe::sltRelatorioSemanal($idRelatorio);
     	$dados['relatorio'] = $infomacoes['relatorio'];
     	$dados['saldo'] = $infomacoes['saldo'];
-
+        
         //View que ira renderizar os dados
     	return view('relatorios.relatorios', $dados);
     }

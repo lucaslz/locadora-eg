@@ -111,9 +111,6 @@ Route::prefix('precos')->group(function () {
 
 	//Rota responsavel por alterar preco e alterar o desconto
 	Route::post('controle', 'Precos@precoDesconto')->name('precoDesconto');
-
-	//Rota responsavel por incluir o preco e o desconto
-	Route::post('incluir', 'Precos@precoDescontoIncluir')->name('precoDescontoIncluir');
 });
 
 //Rotas para controle e gerenciamento de relatorios

@@ -65,7 +65,7 @@ Trait TraitFilme
     public static function tratarFilmeParaVisualizer($dados)
     {
     	//Trarando local da imagem
-    	$dados->imagem = $_SERVER['PATH_IMAGE'] . $dados->imagem;
+    	$dados->imagem = $_SERVER['PATH_IMAGE'] ."/". $dados->imagem;
     	$dados->id = base64_encode(serialize($dados->id));
 
     	//Retornando os dados formatados

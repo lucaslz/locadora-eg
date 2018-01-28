@@ -10,14 +10,14 @@
 				<h1 class="panel-title">Gerenciamento e Controle de Precos</h1>
 			</div>
 			<div class="panel-body">
-				<form class="form-horizontal" action="{{ route('precoDesconto') }}" method="post">
+				<form class="form-horizontal" id="controlePreco" action="{{ route('precoDesconto') }}" method="post">
 					<div class="form-group">
 						<label for="idSelectPreco" class="col-sm-2 control-label">
 							O que deseja fazer ?
 						</label>
 						<div class="col-sm-10">
 							<select name="decisao" class="form-control" id="idSelectPreco">
-								<option>Selecione</option>
+								<option selected>Selecione</option>
 								@if (isset($fazerPreco))
 									@foreach ($fazerPreco as $element)
 										<option value="{{ $element['id'] }}">
@@ -29,14 +29,21 @@
 						</div>
 					</div>
 					<span style="display: none;" id="divIncluirPrecoDesconto">
-						<form class="form-horizontal" action="{{ route('precoDescontoIncluir') }}" method="post">
-							<div class="form-group">
-								<label for="inputPreco" class="form-label col-sm-offset-2">Preço</label>
-								<div class="col-md-10">
-									<input type="text" name="preco" id="inputPreco" required>
-								</div>
+						<div class="alert alert-success text-center" role="alert">
+							<strong>Incluir Preço e Desconto</strong>
+						</div>
+						<div class="form-group">
+							<label for="inputPreco" class="form-label col-sm-2">Preço</label>
+							<div class="col-sm-10">
+								<input type="text" name="valor" id="inputPreco" class="form-control" placeholder="0.00" required>
 							</div>
-						</form>
+						</div>
+						<div class="form-group">
+							<label for="inputDesconto" class="form-label col-sm-2">Desconto</label>
+							<div class="col-sm-10">
+								<input type="text" name="desconto" id="inputDesconto" placeholder="00" class="form-control" required>
+							</div>
+						</div>
 					</span>
 					<span style="display: none;" id="divAlterarPreco">
 						<div class="alert alert-success" role="alert">
@@ -55,11 +62,6 @@
 							   	<input type="text" name="preco" class="form-control precoControle" placeholder="0.00">
 						    </div>
 						</div>
-					  	<div class="form-group">
-					    	<div class="col-sm-offset-2 col-sm-10">
-					      		<button type="submit" class="btn btn-primary">Alterar Preço</button>
-					    	</div>
-					  	</div>
 					</span>
 					<span style="display: none;" id="divAlterarDesconto">
 						<div class="alert alert-success" role="alert">
@@ -75,15 +77,13 @@
 						    	Alterar Desconto
 						    </label>
 							<div class="col-sm-10">
-							   	<input type="text" name="desconto" class="form-control descontoControle" placeholder="00">
+							   	<input type="text" name="descontoAlt" class="form-control descontoControle" placeholder="00">
 						    </div>
 						</div>
-					  	<div class="form-group">
-					    	<div class="col-sm-offset-2 col-sm-10">
-					      		<button type="submit" class="btn btn-primary">Alterar Desconto</button>
-					    	</div>
-					  	</div>
 					</span>
+					<button type="button" class="btn btn-primary btn-block" value="Continuar" onclick="controlePreco();">
+						Continuar
+					</button>
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<input type="hidden" name="id" value="{{ $precoAluguel->id or "" }}">
 				</form>

@@ -254,8 +254,18 @@ class Filmes extends Controller
             );
         }
 
+        $procuraLocacoe = Model\Locacoe::where('idVideo', $id)->get()->toArray();
+
+        if (count($procuraLocacoe) > 0) {
+            $resultDeleteLocacao = Model\Locacoe::where('idVideo', $id)->delete();
+        }
+
         //Deletando o filme
-        $resultDelete = Model\Video::find($id)->delete();
+        if (isset($resultDeleteLocaca) && $resultDeleteLocacao === true) {
+           $resultDelete = Model\Video::find($id)->delete();
+        }elseif(!isset($resultDeleteLocaca)) {
+            $resultDelete = Model\Video::find($id)->delete();
+        }
 
         if ($resultDelete === true) {
             return redirect('filme')->with(

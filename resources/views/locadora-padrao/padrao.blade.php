@@ -24,7 +24,7 @@
 	              	<span class="icon-bar"></span>
 	              	<span class="icon-bar"></span>
 	            </button>
-	            <a class="navbar-brand text-responsive" href="#">
+	            <a class="navbar-brand text-responsive" href="{{ route('home') }}">
 	            	Locavideos
 	            </a>
 	            <ul class="user-menu">
@@ -108,13 +108,13 @@
 		          		</a>
 		          	</li>
 		        </ul>
-		        <div class="attribution">
+{{-- 		        <div class="attribution">
 		        	<b>Criado por: </b><br/>
 		        	Lucas Lima<br>
 		        	Icaro Quintão<br>
 		        	Thiago Rocha<br>
 		        	Saulo Henrrique
-		        </div>
+		        </div> --}}
 	        {{-- </div> --}}
 	   	</div>
 	</aside>
@@ -274,27 +274,26 @@
     </script>
     <script>
     	$('#idSelectPreco').on('change', function(){
-    		var tipo = $(this).val();
+    		var tipo = parseInt($(this).val());
 
     		switch(tipo) {
     			case 1:
-    				console.log(tipo);
     				$('#divIncluirPrecoDesconto').css('display','block');
 	    			$('#divAlterarDesconto').css('display','none');
 	    			$('#divAlterarPreco').css('display','none');
     				break;
     			case 2:
     				$('#divIncluirPrecoDesconto').css('display','none');
-	    			$('#divAlterarDesconto').css('display','block');
-	    			$('#divAlterarPreco').css('display','none');
-    				break;
-				case 3:
-    				$('#divIncluirPrecoDesconto').css('display','none');
 	    			$('#divAlterarDesconto').css('display','none');
 	    			$('#divAlterarPreco').css('display','block');
     				break;
+				case 3:
+					$('#divIncluirPrecoDesconto').css('display','none');
+	    			$('#divAlterarDesconto').css('display','block');
+	    			$('#divAlterarPreco').css('display','none');
+    				break;
 				default:
-    				$('#divIncluirPrecoDesconto').css('display','none');
+					$('#divIncluirPrecoDesconto').css('display','none');
 	    			$('#divAlterarDesconto').css('display','none');
 	    			$('#divAlterarPreco').css('display','none');
     				break;
@@ -335,7 +334,15 @@
     		$('.cep').mask('00000-000');
     		$('.precoControle').mask('00.00');
     		$('#inputValor').mask('00.00');
+    		$('#inputPreco').mask('00.00');
+    		$('#inputDesconto').mask('00');
     	});
+    </script>
+    <script type="text/javascript">
+    	function controlePreco() {
+    		var form = $("#controlePreco");
+    		form.submit();
+    	}
     </script>
  </body>
 </html>

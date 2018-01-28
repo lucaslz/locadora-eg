@@ -1,58 +1,32 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Sistema de locadora de video
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Trabalho de Engenharia de Software
 
-## About Laravel
+O trabalho foi criado no padrão MVC ou seja o software foi todo implementado com "ORIENTAÇÃO À OBJETOS", foi usada um Framework chamado laravel, que é muito conhecido na comunidade WEB, foi ultilizado tambm uma maquina virtual disponibilizada pela própia equipe do laravel, onde não há necessidade de instalar nenhum outro software porque a maquina já vem totalmente configurada para rodar o laravel ela tem três versões do PHP que são: 5.6, 7.0, 7.1 e 7.2, para mais informacoes sobre os outros softwares usada fazer perquisar na página do [Laravel Homestead](https://laravel.com/docs/5.5/homestead), ultilizamoso [MySQL WorkBench](https://www.mysql.com/products/workbench/) apenas para fazer o diagrama ER do sistema, pois o laravel contém uma funcionalidade chamada migrations, onde podemos fazer alteracoes do banco de dados e recria-lo novamente no própio codigo fonte do PHP, sendo assim é só rodar o comando "php artisan migrate" no terminal que você tera um banco de dados novinho e pronto para rodar aplicação, mas para isso é preciso apenas criar o banco com o nome "locadora", e o resto fica por conta do comando citado antes.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+### Programas Usados:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Framework Laravel 5.5](https://laravel.com/docs/5.5).
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+- [MySQL WorkBenk](https://www.mysql.com/products/workbench/), para fazer o diagrama ER.
 
-## Learning Laravel
+- [Vagrant](https://www.vagrantup.com/), o vagrant é uma ferramenta para criação de ambiente virtual.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+- [Laravel Homestead](https://laravel.com/docs/5.5/homestead), maquina virtual que utilizo no vagrant, criada pela equipe do laravel.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+### Guia do Frameork
 
-## Laravel Sponsors
+Esse é um dos melhores e mais completos frameworks para WEB, então para não ficar perdido em meio ao monte de pastas, vou mostrar o modelo MVC, ou seja onde fica cada pasta e cada arquivo criado da aplicação.
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+Abaixo sera listado todos os diretorios onde foi implementado parte do software e dentro destas pastas e ou subpastas ficam todos os arquivos PHP ultilizados no software.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
+- C do MVC onde fica todos os controllers criados na aplicação: app/Http/Controllers
+- M do MVC onde fica todas as Models criadas na palicação: app/Models
+- V do MVC onde fica todas as views criadas da aplicação: resources/views
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+### Diagrama ER da aplicação:
 
-## Security Vulnerabilities
+Veja que o Diagrama ER da aplicação é bem simples, porem na hora de implementar a funcionalidade exite várias validacoes em cima do software.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+![Alt text](ER_ORIGINAL.png?raw=true "Title")
