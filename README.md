@@ -4,6 +4,36 @@
 
 O trabalho foi criado no padrão MVC ou seja o software foi todo implementado com "ORIENTAÇÃO À OBJETOS", foi usada um Framework chamado laravel, que é muito conhecido na comunidade WEB, foi ultilizado tambm uma maquina virtual disponibilizada pela própia equipe do laravel, onde não há necessidade de instalar nenhum outro software porque a maquina já vem totalmente configurada para rodar o laravel ela tem três versões do PHP que são: 5.6, 7.0, 7.1 e 7.2, para mais informacoes sobre os outros softwares usada fazer perquisar na página do [Laravel Homestead](https://laravel.com/docs/5.5/homestead), ultilizamoso [MySQL WorkBench](https://www.mysql.com/products/workbench/) apenas para fazer o diagrama ER do sistema, pois o laravel contém uma funcionalidade chamada migrations, onde podemos fazer alteracoes do banco de dados e recria-lo novamente no própio codigo fonte do PHP, sendo assim é só rodar o comando "php artisan migrate" no terminal que você tera um banco de dados novinho e pronto para rodar aplicação, mas para isso é preciso apenas criar o banco com o nome "locadora", e o resto fica por conta do comando citado antes.
 
+### Requisitos do Sistema
+
+Abaixo estão listados todos os requisitos do sistema, quase todos foram implementados no software porém faltaram alguns, pois ao terminar o software fomos questionados que estava faltando alguns requisitos, então apenas os acrescentamos na lista de requisitos e fizemos o caso de uso deles.
+
+- Alugar Filme
+- Pagar Filme
+- Devolver Filme
+- Cadastrar Administrador
+- Alterar Administrador
+- Alterar Senha do Administrador
+- Recuperar Senha do Administrador
+- Exclui Administrador
+- Cadastrar Cliente
+- Alterar Cliente
+- Excluir Cliente
+- Cadastro Filme
+- Alterar Filme
+- Excluir Filme
+- Listar Clientes
+- Listar Filmes
+- Listar Administradores
+- Cadastrar Preço 
+- Alterar Preço dos Filmes
+- Total de Filmes Alugados
+- Total de Clientes Cadastrados
+- Historico de Venda Semanal
+- Historico de Venda Mensal
+- Cadastrar Genero
+- Deletar Genero
+
 ### Programas Usados:
 
 - [Framework Laravel 5.5](https://laravel.com/docs/5.5).
@@ -41,3 +71,8 @@ repare também que o diagrama de classes no modelo MVC a maioria das classes vir
 
 
 ![Alt text](Modelagens/diagrama_classes.png?raw=true "Diagrama de Classes")
+
+### Algumas imagens do Sistema
+
+![Alt text](imagens_do_sistema/tela_login.jpg?raw=true)
+![Alt text](imagens_do_sistema/tela_recuperar_senha.jpg?raw=true)
