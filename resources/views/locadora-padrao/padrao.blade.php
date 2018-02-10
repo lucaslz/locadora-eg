@@ -63,7 +63,6 @@
     {{-- Barra de navegacao lateral --}}
 	<aside>
 	    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-	    	{{-- <div class="container-fluid"> --}}
 		        <ul class="nav menu">
 		         	<li {{ $activeListar or "" }} id="ativa">
 		         		<a href="{{ route('home') }}">
@@ -108,14 +107,6 @@
 		          		</a>
 		          	</li>
 		        </ul>
-{{-- 		        <div class="attribution">
-		        	<b>Criado por: </b><br/>
-		        	Lucas Lima<br>
-		        	Icaro Quintão<br>
-		        	Thiago Rocha<br>
-		        	Saulo Henrrique
-		        </div> --}}
-	        {{-- </div> --}}
 	   	</div>
 	</aside>
 	<main>
