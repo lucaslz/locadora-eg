@@ -20545,7 +20545,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFhgCBw+jJ9KEs="
 					},
-					"name": "AlterarAdimistrador",
+					"name": "AlterarUsuarios",
 					"visible": true,
 					"defaultDiagram": false,
 					"ownedViews": [
@@ -20615,7 +20615,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Alterar Administrador",
+											"text": "Alterar Usuarios",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -20804,7 +20804,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Administrador",
+											"text": "Usuarios",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -21854,7 +21854,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from Alterar Administrador)",
+											"text": "(from Alterar Usuarios)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -23158,7 +23158,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from Alterar Administrador)",
+											"text": "(from Alterar Usuarios)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -23620,7 +23620,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from Alterar Administrador)",
+											"text": "(from Alterar Usuarios)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -24503,7 +24503,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from Alterar Administrador)",
+											"text": "(from Alterar Usuarios)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -24881,7 +24881,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFhgCBw+jJ9KEs="
 					},
-					"name": "Alterar Administrador",
+					"name": "Alterar Usuarios",
 					"ownedElements": [
 						{
 							"_type": "UMLUseCase",
@@ -24986,7 +24986,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFhgCBw+jJ9KEs="
 					},
-					"name": "Administrador",
+					"name": "Usuarios",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -25191,7 +25191,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFhgDYP68MM95c="
 					},
-					"name": "AlterarSenhaAdministrador",
+					"name": "AlterarSenhaUsuarios",
 					"visible": true,
 					"defaultDiagram": false,
 					"ownedViews": [
@@ -25261,7 +25261,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Alterar Senha Administrador",
+											"text": "Alterar Senha Usuarios",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -25450,7 +25450,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Administrador",
+											"text": "Usuarios",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -25764,7 +25764,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from Alterar Senha Administrador)",
+											"text": "(from Alterar Senha Usuarios)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -27804,7 +27804,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from Alterar Senha Administrador)",
+											"text": "(from Alterar Senha Usuarios)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -28831,7 +28831,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from Alterar Senha Administrador)",
+											"text": "(from Alterar Senha Usuarios)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -29149,7 +29149,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from Alterar Senha Administrador)",
+											"text": "(from Alterar Senha Usuarios)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -30225,7 +30225,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFhgDYP68MM95c="
 					},
-					"name": "Alterar Senha Administrador",
+					"name": "Alterar Senha Usuarios",
 					"ownedElements": [
 						{
 							"_type": "UMLUseCase",
@@ -30436,7 +30436,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFhgDYP68MM95c="
 					},
-					"name": "Administrador",
+					"name": "Usuarios",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
