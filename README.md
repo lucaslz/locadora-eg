@@ -89,6 +89,6 @@ Abaixo estão listados algumas imagens do sistema
   <img src="imagens_do_sistema/tela_controle_usuarios_do_sistema.jpg" width="49%" />
   <img src="imagens_do_sistema/tela_de_relatorios.jpg" width="49%" />
   <img src="imagens_do_sistema/telatorio_semanal.jpg" width="49%" />
-  <img src="imagens_do_sistema/telatorio_mensal.jpg" width="49%" />
+  <img src="imagens_do_sistema/relatorio_mensal.jpg" width="49%" />
   <img src="imagens_do_sistema/alugar_filmes.jpg" width="49%" />
 </p>
