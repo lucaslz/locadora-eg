@@ -82,6 +82,7 @@ Abaixo estão listados algumas imagens do sistema
 ![Alt text](imagens_do_sistema/tela_inicial_sistema.jpg?raw=true)
 ![Alt text](imagens_do_sistema/tela_visualizar_filme.jpg?raw=true)
 ![Alt text](imagens_do_sistema/tela_cadastrar_filme.jpg?raw=true)
+![Alt text](imagens_do_sistema/tela_lista_clientes.jpg?raw=true)
 ![Alt text](imagens_do_sistema/tela_incluir_preco_desconto.jpg?raw=true)
 ![Alt text](imagens_do_sistema/tela_cadastrar_filme.jpg?raw=true)
 ![Alt text](imagens_do_sistema/tela_controle_usuarios_do_sistema.jpg?raw=true)
