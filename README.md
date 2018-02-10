@@ -77,18 +77,18 @@ repare também que o diagrama de classes no modelo MVC a maioria das classes vir
 Abaixo estão listados algumas imagens do sistema
 
 <p float="left">
-  <img src="imagens_do_sistema/tela_login.jpg" width="49%" />
-  <img src="imagens_do_sistema/tela_criar_Adiministrador.jpg" width="49%" /> 
-  <img src="imagens_do_sistema/tela_recuperar_senha.jpg" width="49%" />
-  <img src="imagens_do_sistema/tela_inicial_sistema.jpg" width="49%" />
-  <img src="imagens_do_sistema/tela_visualizar_filme.jpg" width="49%" />
-  <img src="imagens_do_sistema/tela_cadastrar_filme.jpg" width="49%" /> 
-  <img src="imagens_do_sistema/tela_lista_clientes.jpg" width="49%" />
-  <img src="imagens_do_sistema/tela_incluir_preco_desconto.jpg" width="49%" />
-  <img src="imagens_do_sistema/tela_cadastrar_filme.jpg" width="49%" />
-  <img src="imagens_do_sistema/tela_controle_usuarios_do_sistema.jpg" width="49%" />
-  <img src="imagens_do_sistema/tela_de_relatorios.jpg" width="49%" />
-  <img src="imagens_do_sistema/telatorio_semanal.jpg" width="49%" />
-  <img src="imagens_do_sistema/relatorio_mensal.jpg" width="49%" />
-  <img src="imagens_do_sistema/alugar_filmes.jpg" width="49%" />
+  <img src="imagens_do_sistema/tela_login.jpg" width="49%" title="Tela de Login do Sistema" />
+  <img src="imagens_do_sistema/tela_criar_Adiministrador.jpg" width="49%" title="Tela pra criar administrador" /> 
+  <img src="imagens_do_sistema/tela_recuperar_senha.jpg" width="49%" title="Tela para recuperar senha de administrador" />
+  <img src="imagens_do_sistema/tela_inicial_sistema.jpg" width="49%" title="Tela inicial do Sistema" />
+  <img src="imagens_do_sistema/tela_visualizar_filme.jpg" width="49%" title="Tela para Vizualisar informações do Filme" />
+  <img src="imagens_do_sistema/tela_cadastrar_filme.jpg" width="49%" title="Tela para Cadastrar Filme" /> 
+  <img src="imagens_do_sistema/tela_lista_clientes.jpg" width="49%" title="Tela para Listar todos os Clientes" />
+  <img src="imagens_do_sistema/tela_incluir_preco_desconto.jpg" width="49%" title="Tela para incluir um Preço e um Desconto" />
+  <img src="imagens_do_sistema/tela_cadastrar_filme.jpg" width="49%" title="Tela para Cadastrar um Filme" />
+  <img src="imagens_do_sistema/tela_controle_usuarios_do_sistema.jpg" width="49%" title="Tela De Controle de Usuarios do Sistema" />
+  <img src="imagens_do_sistema/tela_de_relatorios.jpg" width="49%" title="Tela de Relatorios do Sistema" />
+  <img src="imagens_do_sistema/telatorio_semanal.jpg" width="49%" title="Tela de Relatorio Semanal" />
+  <img src="imagens_do_sistema/relatorio_mensal.jpg" width="49%" title="Tela de Relatorio Mensal" />
+  <img src="imagens_do_sistema/alugar_filmes.jpg" width="49%" title="Tela de Aluguel de Filmes" />
 </p>
