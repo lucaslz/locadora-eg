@@ -76,16 +76,18 @@ repare também que o diagrama de classes no modelo MVC a maioria das classes vir
 
 Abaixo estão listados algumas imagens do sistema
 
-![Alt text](imagens_do_sistema/tela_login.jpg?raw=true "Tela de Login")
-![Alt text](imagens_do_sistema/tela_criar_Adiministrador.jpg?raw=true "Tela para Criar um Novo Usuario")
-![Alt text](imagens_do_sistema/tela_recuperar_senha.jpg?raw=true "Tela para Recuperar Senha")
-![Alt text](imagens_do_sistema/tela_inicial_sistema.jpg?raw=true "Tela inicial do Sistema")
-![Alt text](imagens_do_sistema/tela_visualizar_filme.jpg?raw=true "Tela para Visualizar Filme")
-![Alt text](imagens_do_sistema/tela_cadastrar_filme.jpg?raw=true "Tela para Cadastrar novo Filme")
-![Alt text](imagens_do_sistema/tela_lista_clientes.jpg?raw=true "Tela para Listar Clientes")
-![Alt text](imagens_do_sistema/tela_incluir_preco_desconto.jpg?raw=true "Tela para Incluir Preço e Desconto")
-![Alt text](imagens_do_sistema/tela_cadastrar_filme.jpg?raw=true "Tela para Cadastrar Filme")
-![Alt text](imagens_do_sistema/tela_controle_usuarios_do_sistema.jpg?raw=true "Tela de Controle de Usuários do Sistema")
-![Alt text](imagens_do_sistema/tela_de_relatorios.jpg?raw=true "Tela de Relatórios")
-![Alt text](imagens_do_sistema/telatorio_semanal.jpg?raw=true "Tela de Relatório Semanal")
-![Alt text](imagens_do_sistema/alugar_filmes.jpg?raw=true "Tela para Alugar Filme")
+<p float="left">
+  <img src="imagens_do_sistema/tela_login.jpg" width="50%" />
+  <img src="imagens_do_sistema/tela_criar_Adiministrador.jpg" width="50%" /> 
+  <img src="imagens_do_sistema/tela_recuperar_senha.jpg" width="50%" />
+  <img src="imagens_do_sistema/tela_inicial_sistema.jpg" width="50%" />
+  <img src="imagens_do_sistema/tela_visualizar_filme.jpg" width="50%" />
+  <img src="imagens_do_sistema/tela_cadastrar_filme.jpg" width="50%" /> 
+  <img src="imagens_do_sistema/tela_lista_clientes.jpg" width="50%" />
+  <img src="imagens_do_sistema/tela_incluir_preco_desconto.jpg" width="50%" />
+  <img src="imagens_do_sistema/tela_cadastrar_filme.jpg" width="50%" />
+  <img src="imagens_do_sistema/tela_controle_usuarios_do_sistema.jpg" width="50%" />
+  <img src="imagens_do_sistema/tela_de_relatorios.jpg" width="50%" />
+  <img src="imagens_do_sistema/telatorio_semanal.jpg" width="50%" />
+  <img src="imagens_do_sistema/alugar_filmes.jpg" width="50%" />
+</p>
