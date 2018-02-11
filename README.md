@@ -11,11 +11,11 @@ Abaixo estão listados todos os requisitos do sistema, quase todos foram impleme
 - Alugar Filme
 - Pagar Filme
 - Devolver Filme
-- Cadastrar Administrador
-- Alterar Administrador
-- Alterar Senha do Administrador
-- Recuperar Senha do Administrador
-- Exclui Administrador
+- Cadastrar Usuário
+- Alterar Usuário
+- Alterar Senha do Usuário
+- Recuperar Senha do Usuário
+- Exclui Usuário
 - Cadastrar Cliente
 - Alterar Cliente
 - Excluir Cliente
@@ -24,7 +24,7 @@ Abaixo estão listados todos os requisitos do sistema, quase todos foram impleme
 - Excluir Filme
 - Listar Clientes
 - Listar Filmes
-- Listar Administradores
+- Listar Usuários
 - Cadastrar Preço 
 - Alterar Preço dos Filmes
 - Total de Filmes Alugados
