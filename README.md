@@ -77,10 +77,7 @@ repare também que o diagrama de classes no modelo MVC a maioria das classes vir
 Abaixo estão listados algumas imagens do sistema
 
 <p float="left">
-  <figure>
-    <img src="imagens_do_sistema/tela_login.jpg" width="49%" title="Tela de Login do Sistema" />
-    <center><figcaption>Tela Inicial de Login!</figcaption></center>
-  </figure>
+  <img src="imagens_do_sistema/tela_login.jpg" width="49%" title="Tela de Login do Sistema" />
   <img src="imagens_do_sistema/tela_criar_Adiministrador.jpg" width="49%" title="Tela pra criar administrador" /> 
   <img src="imagens_do_sistema/tela_recuperar_senha.jpg" width="49%" title="Tela para recuperar senha de administrador" />
   <img src="imagens_do_sistema/tela_inicial_sistema.jpg" width="49%" title="Tela inicial do Sistema" />
