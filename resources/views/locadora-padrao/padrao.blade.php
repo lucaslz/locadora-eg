@@ -150,7 +150,7 @@
 	                        <div class="panel-heading">
 	                            <div class="row">
 	                                <div class="col-xs-3">
-	                                    <i class="fa fa-film fa-5x"></i>
+	                                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
 	                                </div>
 	                                <div class="col-xs-9 text-right">
 	                                    <div class="huge">{{ $totalFilmes->total }}</div>
@@ -170,7 +170,7 @@
 	                        <div class="panel-heading">
 	                            <div class="row">
 	                                <div class="col-xs-3">
-	                                    <i class="fa fa-users fa-5x"></i>
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 	                                </div>
 	                                <div class="col-xs-9 text-right">
 	                                    <div class="huge">{{ $totalClientes->total }}</div>
@@ -190,7 +190,7 @@
 	                        <div class="panel-heading">
 	                            <div class="row">
 	                                <div class="col-xs-3">
-	                                    <i class="fa fa-line-chart fa-5x"></i>
+                                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>              
 	                                </div>
 	                                <div class="col-xs-9 text-right">
 	                                    <div class="huge">{{ $totalLocacoe->total }}</div>
@@ -210,7 +210,7 @@
 	                        <div class="panel-heading">
 	                            <div class="row">
 	                                <div class="col-xs-3">
-	                                    <i class="fa fa-usd fa-5x"></i>
+	                                    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
 	                                </div>
 	                                <div class="col-xs-9 text-right">
 	                                    <div class="huge">

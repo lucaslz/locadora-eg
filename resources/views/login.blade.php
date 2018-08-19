@@ -5,8 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Login Locavideo</title>
     <link rel="shortcut icon" type="image/ico" href="{{ asset('img/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}">
     <style type="text/css">
     	body {
     		background-image: url("img/background.jpg");
@@ -89,8 +88,7 @@
 				</div>
 			</div>
 		</div>
-		<script src="{{ asset('js/jquery.min.js') }}"></script>
-    	<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('js/all.js') }}"></script>
 		<!-- Modal -->
 		<div class="modal fade" id="recSenha" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  	<div class="modal-dialog" role="document">

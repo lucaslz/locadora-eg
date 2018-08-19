@@ -17,12 +17,12 @@ mix.js('resources/assets/js/app.js', 'public/js')
 mix.styles([
     'public/css/app.css',
     'public/css/styles.css',
-    'public/font-awesome/css/font-awesome.css',
     'public/datatables/datatables.css'
 ], 'public/css/all.css');
 
 mix.scripts([
-    'public/js/app.js',
+    'public/js/jquery/jquery-1.11.1.min.js',
+    'public/bootstrap-3.3.7/js/bootstrap.js',
     'public/js/jquery/lumino.glyphs.js',
     'public/datatables/datatables.js',
     'public/js/jquery-mask/jquery.mask.js'
