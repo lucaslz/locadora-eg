@@ -269,25 +269,17 @@
 
     		switch(tipo) {
     			case 1:
-    				$('#divIncluirPrecoDesconto').css('display','block');
-	    			$('#divAlterarDesconto').css('display','none');
-	    			$('#divAlterarPreco').css('display','none');
-    				break;
-    			case 2:
-    				$('#divIncluirPrecoDesconto').css('display','none');
-	    			$('#divAlterarDesconto').css('display','none');
+    				$('#divAlterarDesconto').css('display','none');
 	    			$('#divAlterarPreco').css('display','block');
     				break;
-				case 3:
-					$('#divIncluirPrecoDesconto').css('display','none');
-	    			$('#divAlterarDesconto').css('display','block');
+				case 2:
+					$('#divAlterarDesconto').css('display','block');
 	    			$('#divAlterarPreco').css('display','none');
     				break;
 				default:
-					$('#divIncluirPrecoDesconto').css('display','none');
-	    			$('#divAlterarDesconto').css('display','none');
+					$('#divAlterarDesconto').css('display','none');
 	    			$('#divAlterarPreco').css('display','none');
-    				break;
+    			break;
     		}
     	});
     </script>
@@ -323,7 +315,8 @@
     		$('.cpf').mask('000.000.000-00', {reverse: true});
     		$('.telefone').mask('(00) 0 0000-0000');
     		$('.cep').mask('00000-000');
-    		$('.precoControle').mask('00.00');
+    		$('.precoControle').mask('0.00');
+    		$('.descontoControle').mask('00');
     		$('#inputValor').mask('00.00');
     		$('#inputPreco').mask('00.00');
     		$('#inputDesconto').mask('00');
@@ -333,6 +326,11 @@
     	function controlePreco() {
     		var form = $("#controlePreco");
     		form.submit();
+    	}
+    </script>
+    <script type="text/javascript">
+    	function pagarCliente (idCliente) {
+    		console.log(atob(idCliente));
     	}
     </script>
  </body>

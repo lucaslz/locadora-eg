@@ -34,8 +34,15 @@ class Filmes extends Controller
             "filmes" => Model\Video::listarVideos(),
     	];
 
+        $dados['currentPage'] = $dados['filmes']->currentPage(); 
+        $dados['lastPage'] = $dados['filmes']->lastPage(); 
+
+        $dados['videos'] = $dados['filmes'];
+
         //Trando os id's dos filmes
-        $dados["filmes"] = Traits\TraitFilme::tratarIdFilme($dados["filmes"]);
+        $dados["filmes"] = Traits\TraitFilme::tratarIdFilme(
+            $dados['filmes']->items()
+        );
 
         //Pegando o toral de filmes
         $dados["totalFilmes"] = current(Model\Video::sltTotalFilmes());
@@ -82,7 +89,7 @@ class Filmes extends Controller
         //Setando configuracoes de validacao
         $validator = Validator::make($request->all(), [
             'titulo' => 'required|max:255',
-            'descricao' => 'required|max:255',
+            'descricao' => 'required|max:5000',
             'idGenero' => 'required|numeric',
             'imagem' => 'required|image',
         ]);
@@ -357,6 +364,14 @@ class Filmes extends Controller
 
         //Buscando o valor do alugel atual do filme
         $valorAtual = current(Model\Preco::all()->toArray())['valor'];
+        
+        //Validacao de valor
+        if (is_null($valorAtual) || $valorAtual == 0) {
+            return redirect()->back()->with(
+                'error',
+                'O preço de locação não foi definido!'
+            );
+        }
 
         //Verificando se o filme ja esta alugado por essa pessoa
         $resultAlugado = current(

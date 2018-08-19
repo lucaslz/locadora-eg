@@ -4,7 +4,7 @@
 
 @section('conteudo')
 <div class="row">
-	<div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
+	<div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 mb-2">
 		<div class="panel panel-primary">
 			<div class="panel-heading text-center text-responsive">
 				<h1 class="panel-title">Gerenciamento de Relatórios</h1>
@@ -31,6 +31,28 @@
 		</div>
 		@if (isset($saldo))
 			<div class="row">
+		        <div class="col-lg-6 col-md-6 col-md-offset-3 col-lg-offset-3">
+		            <div class="panel panel-danger">
+		                <div class="panel-heading">
+		                    <div class="row">
+	                            <div class="col-xs-4">
+	                                <i class="fa fa-usd fa-5x"></i>
+	                            </div>
+		                        <div class="col-xs-8 text-right">
+		                        	<div class="text-responsive">Total à receber</div>
+		                            <div class="huge">
+		                            	{{ $saldo['receber']->total}}
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		                <a href="#">
+		                    <div class="panel-footer">
+		                        <div class="clearfix"></div>
+		                    </div>
+		                </a>
+		            </div>
+		        </div>
 		        <div class="col-lg-6 col-md-6">
 		            <div class="panel panel-info">
 		                <div class="panel-heading">
@@ -40,7 +62,9 @@
 	                            </div>
 		                        <div class="col-xs-8 text-right">
 		                        	<div class="text-responsive">Total Semanal</div>
-		                            <div class="huge">{{ "R$ " . number_format($saldo['semana']->total, "2", ".", "") }}</div>
+		                            <div class="huge">
+		                            	{{ $saldo['semana']->total }}
+		                            </div>
 		                        </div>
 		                    </div>
 		                </div>
@@ -60,7 +84,9 @@
 	                            </div>
 		                        <div class="col-xs-8 text-right">
 		                        	<div class="text-responsive">Total Mensal</div>
-		                            <div class="huge">{{ "R$ " . number_format($saldo['mes']->total, "2", ".", "") }}</div>
+		                            <div class="huge">
+		                            	{{ $saldo['mes']->total}}
+		                            </div>
 		                        </div>
 		                    </div>
 		                </div>
@@ -84,6 +110,7 @@
 		                <th>Filme</th>
 		                <th>Data Locação</th>
 		                <th>valor</th>
+		                <th>Pago ?</th>
 		            </tr>
 		        </thead>
 		        <tbody>
@@ -93,6 +120,13 @@
 			        		<td>{{ $element->nomeFilme }}</td>
 			        		<td>{{ $element->dataLocacao }}</td>
 			        		<td>{{ $element->valorLocacao }}</td>
+			        		<td>
+			        			@if ($element->pago == 1)
+			        				<span class="label label-success">Sim</span>
+			        			@else
+			        				<span class="label label-warning">Não</span>
+			        			@endif
+			        		</td>
 			        	</tr>
 		        	@endforeach
 		        </tbody>

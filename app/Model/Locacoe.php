@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Traits\TraitDados;
 
 class Locacoe extends Model
 {
@@ -66,7 +67,6 @@ class Locacoe extends Model
             $dias = 30;
         }
 
-
         //Calculando o saldo total semanal
         $totalSemanal = DB::select(
             DB::raw(
@@ -85,22 +85,36 @@ class Locacoe extends Model
             )
         );
 
+        //Calculando o saldo total a receber
+        $totalReceber = DB::select(
+            DB::raw(
+                "SELECT SUM(l.valorLocacao) as total FROM locacoes AS l ".
+                "WHERE l.pago = 0"
+            )
+        );
+
         //selecionando os dados
         $relatorio = DB::select(
             DB::raw(
                 "SELECT c.nome AS cliente, v.titulo AS nomeFilme, ".
-                "l.dataLocacao, l.valorLocacao ".
+                "l.dataLocacao, l.valorLocacao, l.pago ".
                 "FROM locacoes AS l ".
                 "INNER JOIN clientes AS c ON c.id = l.idCliente ".
                 "INNER JOIN videos AS v ON v.id = l.idVideo ".
-                "WHERE l.pago = 1 AND l.dataLocacao ".
-                "BETWEEN DATE_SUB(NOW(), INTERVAL $dias DAY) AND NOW() ORDER BY l.id DESC"
+                "WHERE (l.pago = 1 OR l.pago = 0 OR l.pago IS NULL) ".
+                "AND l.dataLocacao ".
+                "BETWEEN DATE_SUB(NOW(), INTERVAL $dias DAY) AND NOW() ".
+                "ORDER BY l.id DESC"
             )
         );
 
         $dados['relatorio'] = $relatorio;
         $dados['saldo']['semana'] = $totalSemanal[0];
         $dados['saldo']['mes'] = $totalMes[0];
+        $dados['saldo']['receber'] = $totalReceber[0];
+
+        //Formatando os dados
+        $dados = TraitDados::formatarSaldoBr($dados);
 
         return $dados;
     }

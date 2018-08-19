@@ -13,7 +13,7 @@
 				<form class="form-horizontal" id="controlePreco" action="{{ route('precoDesconto') }}" method="post">
 					<div class="form-group">
 						<label for="idSelectPreco" class="col-sm-2 control-label">
-							O que deseja fazer ?
+							Alterar Preço:
 						</label>
 						<div class="col-sm-10">
 							<select name="decisao" class="form-control" id="idSelectPreco">
@@ -28,23 +28,6 @@
 							</select>
 						</div>
 					</div>
-					<span style="display: none;" id="divIncluirPrecoDesconto">
-						<div class="alert alert-success text-center" role="alert">
-							<strong>Incluir Preço e Desconto</strong>
-						</div>
-						<div class="form-group">
-							<label for="inputPreco" class="form-label col-sm-2">Preço</label>
-							<div class="col-sm-10">
-								<input type="text" name="valor" id="inputPreco" class="form-control" placeholder="0.00" required>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputDesconto" class="form-label col-sm-2">Desconto</label>
-							<div class="col-sm-10">
-								<input type="text" name="desconto" id="inputDesconto" placeholder="00" class="form-control" required>
-							</div>
-						</div>
-					</span>
 					<span style="display: none;" id="divAlterarPreco">
 						<div class="alert alert-success" role="alert">
 							<strong>Preço Atual: </strong>
@@ -56,10 +39,10 @@
 						</div>
 						<div class="form-group">
 						    <label for="inputGenero" class="col-sm-2 control-label">
-						    	Alterar Preço
+						    	Alterar Preço:
 						    </label>
 							<div class="col-sm-10">
-							   	<input type="text" name="preco" class="form-control precoControle" placeholder="0.00">
+							   	<input type="text" name="preco" class="form-control precoControle" placeholder="0.00" value="{{ $precoAluguel->valor }}">
 						    </div>
 						</div>
 					</span>
@@ -74,10 +57,10 @@
 						</div>
 						<div class="form-group">
 						    <label for="inputGenero" class="col-sm-2 control-label">
-						    	Alterar Desconto
+						    	Alterar Desconto:
 						    </label>
 							<div class="col-sm-10">
-							   	<input type="text" name="descontoAlt" class="form-control descontoControle" placeholder="00">
+							   	<input type="text" name="desconto" class="form-control descontoControle" placeholder="00" value="{{ $precoAluguel->desconto }}">
 						    </div>
 						</div>
 					</span>

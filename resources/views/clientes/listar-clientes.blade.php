@@ -14,7 +14,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
+	<div class="col-sm-12 col-md-12">
 		<table id="locausers" class="table-responsive table table-hover">
 	        <thead class="thead-inverse">
 	            <tr>

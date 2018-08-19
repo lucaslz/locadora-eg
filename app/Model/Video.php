@@ -33,7 +33,7 @@ class Video extends Model
 	    	"descricao",
 	    	"disposicao",
 	    	"imagem"
-    	)->get()->toArray();
+    	)->paginate(12);
     }
 
     /**

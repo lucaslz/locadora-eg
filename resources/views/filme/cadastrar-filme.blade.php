@@ -57,7 +57,7 @@
 					</div>
 				  	<div class="form-group">
 				  		<div class="col-sm-10 col-sm-offset-2">
-				  			<input type="submit" class="btn btn-md btn-primary">
+				  			<input type="submit" class="btn btn-md btn-primary" value="cadastrar">
 				  		</div>
 				  	</div>
 				  	<input type="hidden" name="_token" value="{{ csrf_token() }}">

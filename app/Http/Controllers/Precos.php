@@ -23,16 +23,12 @@ class Precos extends Controller
     	$dados = [
     		"activePreco" => "class=active",
     		"fazerPreco" => [
-                [
-                    "id" => 1,
-                    "preco" => "Incluir Preço e Desconto",
-                ],
 	    		[
-	    			"id" => 2,
+	    			"id" => 1,
 	    			"preco" => "Alterar Preço",
 	    		],
 	    		[
-	    			"id" => 3,
+	    			"id" => 2,
 	    			"preco" => "Alterar Desconto",
 	    		]
     		],
@@ -40,31 +36,32 @@ class Precos extends Controller
         		Model\Preco::sltPrecoAndDesconto()
         	),
     	];
-
+        // var_dump($dados);die();
         //View que ira renderizar os dados
     	return view('precos.controle-precos', $dados);
     }
 
+    /**
+     * Metodo responsavel por alterar ou incluir
+     * um preço e um desconto
+     * 
+     * @param  Request $request  [variavel de requisicao]
+     * @return [mixed]           [retorno com status]
+     */
     public static function precoDesconto(Request $request)
     {
         $dados = $request->all();
 
         //Valida os dados dependendo da decicao
-        if ($dados['decisao'] == 1) {
-            //Setando configuracoes de validacao
-            $validator = Validator::make($dados, [
-                'valor' => 'required|numeric',
-                'desconto' => 'required|numeric',
-            ]);
-        } elseif($dados['decisao'] == 2) {
+        if($dados['decisao'] == 1) {
             //Setando configuracoes de validacao
             $validator = Validator::make($request->all(), [
                 'preco' => 'required|numeric',
             ]);
-        }else {
+        }elseif($dados['decisao'] == 2) {
             //Setando configuracoes de validacao
             $validator = Validator::make($request->all(), [
-                'descontoAlt' => 'required|numeric',
+                'desconto' => 'required|numeric',
             ]);
         }
 
@@ -75,59 +72,31 @@ class Precos extends Controller
                 ->withInput($request->all()
             );
         }
-
-        switch ($dados['decisao']) {
-            case Enum\Preco::INCLUIR_PRECO_DESCONTO:
-                if (count(Model\Preco::all()->toArray()) > 1){
-                    break;
-                }
-
-                $result = Model\Preco::insert([
-                    [
-                        'valor' => $dados['valor'],
-                        'desconto' => $dados['desconto']
-                    ]
-                ]);
-                $frase = "Incluir Preço";
-                break;
-            case Enum\Preco::ALTERAR_PRECO:
-                if (count(Model\Preco::all()->toArray()) == 0){
-                    break;
-                }
-                $result= Model\Preco::find($dados['id'])->update(
-                    ['valor' => $dados['preco']]
-                );
-                $frase = "Preço Alterado";
-                break;
-            case Enum\Preco::ALTERAR_DESCONTO:
-                if (count(Model\Preco::all()->toArray()) == 0){
-                    break;
-                }
-                $result = Model\Preco::find($dados['id'])->update(
-                    ['desconto' => $dados['descontoAlt']]
-                );
-                $frase = "Desconto Alterado";
-                break;
-            default:
-                //Caso houver algum erro
-                return redirect()->back()->with(
-                    'error',
-                    'Não foi possível fazer nenhuma altecação ou inclusão!'
-                );
-            break;
+        
+        //Inserindo ou alterando os precos e descontos
+        if (is_null($dados['id']) || empty($dados['id'])) {
+           $result = Model\Preco::insPrecoDesconto($dados); 
+        } elseif(!empty($dados['id'])) {
+            $result = Model\Preco::updPrecoDesconto($dados);
+        }else {
+            //Caso houver algum erro
+            return redirect()->back()->with(
+                'error',
+                'Não foi possivel realizar a operação!'
+            );
         }
-
+        // var_dump($result); die();
         //Retorna uma mensagem para o usuario
-        if (isset($result) && $result === true) {
+        if (isset($result) && ($result == 1 | $result == true)) {
             return redirect()->back()->with(
                 'success',
-                $frase . ' com sucesso!'
+                'Operação realizada com sucesso!'
             );
         }
         //Caso houver algum erro
         return redirect()->back()->with(
             'error',
-            'Não foi possível fazer nenhuma altecação ou inclusão!'
+            'Não foi possivel realizar a operação!'
         );
     }
 }

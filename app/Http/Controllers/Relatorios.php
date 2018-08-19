@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Traits\TraitClientes;
+use App\Traits\TraitData;
 use App\Model as Model;
 use Validator;
 
@@ -74,9 +74,14 @@ class Relatorios extends Controller
     	$dados['msnRelatorio'] = $idRelatorio == 0 ? "Semanal" : "Mensal";
 
     	//pegando os dados
-    	$infomacoes = Model\Locacoe::sltRelatorioSemanal($idRelatorio);
-    	$dados['relatorio'] = $infomacoes['relatorio'];
-    	$dados['saldo'] = $infomacoes['saldo'];
+    	$inf = Model\Locacoe::sltRelatorioSemanal($idRelatorio);
+    	
+        //Formatando a data
+        $relatorio = TraitData::formatarDataHoraRelatorio($inf['relatorio']);
+
+        //Organizando e retornando os dados
+        $dados['relatorio'] = $inf['relatorio'];
+    	$dados['saldo'] = $inf['saldo'];
         
         //View que ira renderizar os dados
     	return view('relatorios.relatorios', $dados);
