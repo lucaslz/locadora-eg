@@ -5,11 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Locavideo</title>
     <link rel="shortcut icon" type="image/ico" href="{{ asset('img/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}">
     {{-- scripts --}}
 </head>
 <body>
@@ -245,7 +241,7 @@
 			</div>
 		</div>
 	</main>
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/all.js') }}"></script>
     {{-- Script para controle de genero --}}
     <script>
     	$('#idSelectGenero').on('change', function(){
@@ -283,9 +279,6 @@
     		}
     	});
     </script>
-    <script src="{{ asset('js/lumino.glyphs.js') }}" type="text/javascript" charset="utf-8"></script>
-    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
     <script>
 		$(document).ready(function() {
 		    $('#locausers').DataTable( {
@@ -309,7 +302,6 @@
 		    } );
 		} );
     </script>
-    <script type="text/javascript" src="{{ asset('jquery-mask/jquery.mask.min.js') }}"></script>
     <script>
     	$(function() {
     		$('.cpf').mask('000.000.000-00', {reverse: true});
