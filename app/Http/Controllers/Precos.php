@@ -66,7 +66,7 @@ class Precos extends Controller
         }
 
         //Validando os campos do formulario
-        if($validator->fails()) {
+        if(isset($validator) && $validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput($request->all()

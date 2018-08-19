@@ -1,4 +1,4 @@
-@extends('locadora-padrao.padrao')
+@extends('base.padrao')
 
 @section('nomePagina', 'Alterar Cliente')
 

@@ -21,9 +21,10 @@ mix.styles([
 ], 'public/css/all.css');
 
 mix.scripts([
-    'public/js/jquery/jquery-1.11.1.min.js',
+    'public/js/jquery.min.js',
     'public/bootstrap-3.3.7/js/bootstrap.js',
-    'public/js/jquery/lumino.glyphs.js',
+    'public/js/lumino.glyphs.js',
     'public/datatables/datatables.js',
-    'public/js/jquery-mask/jquery.mask.js'
+    'public/js/jquery-mask/jquery.mask.js',
+    'public/js/locadora.js'
 ], 'public/js/all.js');

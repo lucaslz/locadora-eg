@@ -1,4 +1,4 @@
-@extends('locadora-padrao.padrao')
+@extends('base.padrao')
 
 @section('nomePagina', 'Lista de Cliente')
 
@@ -50,9 +50,9 @@
 						    </a>
 	        			</td>
 	        			<td>
-						    <a href="{{ route('deletarCliente')."/".$element->idClienteEndereco }}" class="btn btn-danger btn-sm">
-						      	<span class="glyphicon glyphicon-remove"></span>
-						    </a>
+							<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDeletar">
+	  							<span class="glyphicon glyphicon-remove"></span>
+							</button>
 	        			</td>
 	        			<td>
 	        				@if(empty($element->total))
@@ -60,9 +60,9 @@
 							      	<span class="glyphicon glyphicon-ok"></span>
 							    </button>
 	        				@else
-							    <a href="{{ route('pagarClientes') .'/'. $element->idClienteEndereco }}" class="btn btn-primary btn-sm">
-							      	<span class="glyphicon glyphicon-usd"></span>
-							    </a>
+								<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalPagar">
+	  								<span class="glyphicon glyphicon-usd"></span>
+								</button>
 	        				@endif
 	        			</td>
 	        		</tr>
@@ -70,5 +70,58 @@
 	        </tbody>
     	</table>
 	</div>
+</div>
+{{-- modal para pagar conta --}}
+<div class="modal fade" id="modalPagar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header bg-warning">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title" id="myModalLabel">
+        			<b style="color: white">Pagar Conta!</b>
+        		</h4>
+      		</div>
+      		<div class="modal-body">
+        		<span style="font-weight: bolder; font-size: 1.5em;">
+        			Deseja abater a conta do cliente ?
+        		</span>
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-danger" data-dismiss="modal">
+        			Sair
+        		</button>
+				<a href="{{ route('pagarClientes') .'/'. $element->idClienteEndereco }}" class="btn btn-success">
+					Pagar
+				</a>
+      		</div>
+    	</div>
+  	</div>
+</div>
+
+{{-- modal para deletar usuario --}}
+<div class="modal fade" id="modalDeletar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header bg-warning">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title" id="myModalLabel">
+        			<b style="color: white">Deletar Usuario!</b>
+        		</h4>
+      		</div>
+      		<div class="modal-body">
+        		<span style="font-weight: bolder; font-size: 1.5em;">
+        			Deseja realmente <span style="color: red;">deletar</span> o usuário ?
+        		</span>
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-danger" data-dismiss="modal">
+        			Sair
+        		</button>
+				<a href="{{ route('deletarCliente')."/".$element->idClienteEndereco }}" class="btn btn-success">
+				 	Deletar
+				</a>
+      		</div>
+    	</div>
+  	</div>
 </div>
 @endsection

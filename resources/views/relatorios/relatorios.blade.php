@@ -1,4 +1,4 @@
-@extends('locadora-padrao.padrao')
+@extends('base.padrao')
 
 @section('nomePagina', 'Relatório')
 
@@ -36,7 +36,7 @@
 		                <div class="panel-heading">
 		                    <div class="row">
 	                            <div class="col-xs-4">
-	                                <i class="fa fa-usd fa-5x"></i>
+	                                <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
 	                            </div>
 		                        <div class="col-xs-8 text-right">
 		                        	<div class="text-responsive">Total à receber</div>
@@ -58,7 +58,7 @@
 		                <div class="panel-heading">
 		                    <div class="row">
 	                            <div class="col-xs-4">
-	                                <i class="fa fa-usd fa-5x"></i>
+	                                <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
 	                            </div>
 		                        <div class="col-xs-8 text-right">
 		                        	<div class="text-responsive">Total Semanal</div>
@@ -80,7 +80,7 @@
 		                <div class="panel-heading">
 		                    <div class="row">
 	                            <div class="col-xs-4">
-	                               	<i class="fa fa-usd fa-5x"></i>
+	                               	<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
 	                            </div>
 		                        <div class="col-xs-8 text-right">
 		                        	<div class="text-responsive">Total Mensal</div>

@@ -1,4 +1,4 @@
-@extends('locadora-padrao.padrao')
+@extends('base.padrao')
 
 @section('nomePagina', 'Preço e Desconto')
 
@@ -64,7 +64,7 @@
 						    </div>
 						</div>
 					</span>
-					<button type="button" class="btn btn-primary btn-block" value="Continuar" onclick="controlePreco();">
+					<button type="button" class="btn btn-primary btn-block" value="Continuar" onclick="enviaFormularioPreco();">
 						Continuar
 					</button>
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
